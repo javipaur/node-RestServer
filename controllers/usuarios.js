@@ -11,8 +11,15 @@ const usuariosGet = async(req = request, res = response) => {
 }
 
 const usuariosPost = async(req, res = response) => {
+    const body=req.body;
+
+    const usuario=new Usuario(body);//Creamos la isntancia
+    await usuario.save();//insertamos el usuario
+
+
     res.json({
-        msg: 'post API - usuariosPost'
+        msg: 'post API - usuariosPost',
+        usuario
     });
    
 }
