@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "..\\.."
+		},
+		{
+			"path": "..\\..\\06-WebServer"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {}
+}
