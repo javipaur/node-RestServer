@@ -9,7 +9,7 @@ router.get('/',usuariosGet);
 
 router.put('/:id', usuariosPut);  
 
- router.post('/',[
+router.post('/',[
      check('nombre','El nombre  es obligatorio').not().isEmpty(),
      check('password','El password  es obligatorio y mayor de 6 letras').isLength({min:6}),
      check('correo','El correo no es valido').isEmail(),

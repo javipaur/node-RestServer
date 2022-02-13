@@ -7,8 +7,11 @@ const bcrypt =require('bcryptjs');
 
 
 const usuariosGet = async(req = request, res = response) => {
+    //QueryParams
+    const {q,nombre="No name",apikey,page=1,limit}=req.query;
     res.json({
-        msg: 'get API - usuariosGet'
+        msg: 'get API - usuariosGet',
+        q,nombre,apikey,page,limit
     });
   
 }
@@ -19,9 +22,9 @@ const usuariosPost = async(req, res = response) => {
 
     const {nombre,correo,password,rol}=req.body;
 
-    const usuario=new Usuario({nombre,correo,password,rol});//Creamos la isntancia
+    const usuario=new Usuario({nombre,correo,password,rol});//Creamos la instancia
     
-    //Verificamso si el correo existe
+    //Verificamos si el correo existe
     const existecorreo=await Usuario.findOne({correo:correo});
     if(existecorreo){
         return res.status(400).json({
@@ -46,9 +49,10 @@ const usuariosPost = async(req, res = response) => {
 }
 
 const usuariosPut = async(req, res = response) => {
-
+    const {id}=req.params;
     res.json({
-        msg: 'put API - usuariosPut'
+        msg: 'put API - usuariosPut',
+        id
     });
 }
 

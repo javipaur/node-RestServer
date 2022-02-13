@@ -9,7 +9,7 @@ class Server{
         this.port=process.env.PORT;
         this.usuariosPath='/api/usuarios';
         //Conexion Bd
-       this.conectarDB();
+        this.conectarDB();
         //Midelwares
         this.middlewares();
         //Rutas de mi aplicacion
@@ -30,7 +30,7 @@ class Server{
         this.app.use(express.json());
     }
 
-
+    //Definimos las rutas
     routes(){
       this.app.use(this.usuariosPath,require('../routes/usuarios'));
        
