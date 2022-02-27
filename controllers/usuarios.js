@@ -9,9 +9,20 @@ const usuariosGet = async(req = request, res = response) => {
 
     //Flitramso la cantidad de registros
     const{limite=5,desde=0}=req.query;
-    const usuarios =await Usuario.find().skip(desde).limit(limite);
+    const query={estado:true}
 
-    res.json({
+  
+    const [total,usuarios] = await Promise.all([
+        Usuario.count(query),
+        Usuario.find(query)
+        .skip(Number (desde))
+        .limit(Number (Numberlimite))
+    ]);
+
+
+
+    res.json({ 
+        total,
         usuarios
     });
   
