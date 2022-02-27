@@ -17,7 +17,16 @@ const existecorreo=await Usuario.findOne({correo});
     }
 }
 
+const existeUsuarioPorId=async(id='')=>{
+    //Verificar si el id existe    
+    const existeUsuario=await Usuario.findById({id});
+        if(!existeUsuario){
+            throw new Error(`El id no existe ${id}`);
+        }
+    }
+
 module.exports={
     esRoleValido,
+    existeUsuarioPorId,
     emailExiste
 }

@@ -6,10 +6,18 @@ const bcrypt =require('bcryptjs');
 
 
 const usuariosGet = async(req = request, res = response) => {
+
+    //Flitramso la cantidad de registros
+    const{limite=5,desde=0}=req.query;
+    const usuarios =await Usuario.find().skip(desde).limit(limite);
+
+    res.json({
+        usuarios
+    });
+
     //QueryParams
     const {q,nombre="No name",apikey,page=1,limit}=req.query;
     res.json({
-        msg: 'get API - usuariosGet',
         q,nombre,apikey,page,limit
     });
   
@@ -41,7 +49,7 @@ const usuariosPost = async(req, res = response) => {
 
 const usuariosPut = async(req, res = response) => {
     const {id}=req.params;
-    const{password,google,correo,...resto}=req.body;
+    const{_id,password,google,correo,...resto}=req.body;
 
     //Validar contra bd
     if(password){
@@ -53,7 +61,6 @@ const usuariosPut = async(req, res = response) => {
 
 
     res.json({
-        msg: 'put API - usuariosPut',
         usuario
     });
 }
