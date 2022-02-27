@@ -14,12 +14,6 @@ const usuariosGet = async(req = request, res = response) => {
     res.json({
         usuarios
     });
-
-    //QueryParams
-    const {q,nombre="No name",apikey,page=1,limit}=req.query;
-    res.json({
-        q,nombre,apikey,page,limit
-    });
   
 }
 
