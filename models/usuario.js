@@ -34,5 +34,12 @@ const UsuarioSchema = Schema({
 });
 
 
+//Ocultamos la pws y la version en la respuesta
+UsuarioSchema.methods.toJSON=function(){
+    const{__v,password,...usuario}=this.toObject();
+    return usuario;
+
+}
+
 
 module.exports = model( 'Usuario', UsuarioSchema );

@@ -20,7 +20,7 @@ router.post('/',[
      check('password','El password  es obligatorio y mayor de 6 letras').isLength({min:6}),
      check('correo','El correo no es valido').isEmail(),
     // check('rol','No es un rol permitodo').isIn(['ADMIN_ROLE','USER_ROLE']),
-    check('rol').custom(),
+    check('rol').custom(esRoleValido),
      validarCampos
  ],usuariosPost); //Definimos un midelware para validar los campos
 

@@ -39,7 +39,6 @@ const usuariosPost = async(req, res = response) => {
 
 
     res.json({
-        msg: 'post API - usuariosPost',
         usuario
     });
    
