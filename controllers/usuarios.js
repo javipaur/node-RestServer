@@ -80,6 +80,12 @@ const usuariosDelete = async(req, res = response) => {
 
     const {id}=req.params;
 
+    //Borrado Fisico
+    const usuario= await Usuario.findByIdAndDelete(id);
+
+
+
+
     res.json({
         id,
         msg: 'delete API - usuariosDelete'
