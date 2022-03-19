@@ -16,7 +16,7 @@ const usuariosGet = async(req = request, res = response) => {
         Usuario.count(query),
         Usuario.find(query)
         .skip(Number (desde))
-        .limit(Number (Numberlimite))
+        .limit(Number (limite))
     ]);
 
 
